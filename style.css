@@ -42,6 +42,9 @@ body.view-game #game { display: flex; }
   text-align: center;
   padding: 32px;
   position: relative;
+  background:
+    linear-gradient(180deg, rgba(10,11,14,0.55) 0%, rgba(10,11,14,0.85) 100%),
+    url("assets/landing-bg.jpg") center / cover no-repeat;
 }
 .landing-inner { max-width: 520px; }
 .eyebrow {
