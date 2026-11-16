@@ -1,0 +1,51 @@
+:root {
+  --bg: #0b0f14;
+  --fg: #f2f5f9;
+  --muted: #9aa4b2;
+  --goal: #2ecc71;
+  --nogoal: #e74c3c;
+  --accent: #3b82f6;
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; height: 100%; background: var(--bg); color: var(--fg); font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif; overflow: hidden; }
+
+.view { display: none; }
+body.view-landing #landing { display: flex; }
+body.view-game #game { display: flex; }
+
+#landing { align-items: center; justify-content: center; height: 100vh; text-align: center; padding: 24px; }
+.landing-inner { max-width: 480px; }
+h1 { font-size: clamp(2rem, 6vw, 3rem); margin: 0 0 12px; }
+.tagline { color: var(--muted); margin: 0 0 24px; }
+.hint { color: var(--muted); font-size: 0.85rem; margin-top: 16px; }
+
+#game { flex-direction: column; height: 100vh; padding: 12px; gap: 12px; }
+.hud { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.streak { font-weight: 600; }
+.timer { font-size: 1.5rem; font-variant-numeric: tabular-nums; min-width: 2ch; text-align: center; }
+.btn { cursor: pointer; border: 0; border-radius: 10px; padding: 12px 18px; font-size: 1rem; font-weight: 600; background: #1f2937; color: var(--fg); }
+.btn.primary { background: var(--accent); }
+.btn.small { padding: 6px 10px; font-size: 0.85rem; }
+.btn.goal { background: var(--goal); color: #062814; flex: 1; }
+.btn.nogoal { background: var(--nogoal); color: #2a0a08; flex: 1; }
+.btn:disabled { opacity: 0.4; cursor: not-allowed; }
+
+.player-wrap { position: relative; flex: 1; min-height: 0; border-radius: 12px; overflow: hidden; border: 3px solid transparent; transition: border-color 0.2s, box-shadow 0.2s; background: #000; }
+.player-wrap.correct { border-color: var(--goal); box-shadow: 0 0 40px rgba(46,204,113,0.6); }
+.player-wrap.wrong { border-color: var(--nogoal); box-shadow: 0 0 40px rgba(231,76,60,0.6); }
+#player { position: absolute; inset: 0; width: 100%; height: 100%; }
+.click-shield { position: absolute; inset: 0; z-index: 2; }
+.reveal-overlay { position: absolute; inset: 0; z-index: 3; display: flex; align-items: center; justify-content: center; font-size: clamp(2rem, 8vw, 4rem); font-weight: 800; pointer-events: none; text-shadow: 0 2px 12px rgba(0,0,0,0.6); }
+.reveal-overlay.goal { color: var(--goal); }
+.reveal-overlay.nogoal { color: var(--nogoal); }
+
+.controls { display: flex; gap: 12px; }
+.runover, .empty { text-align: center; padding: 16px; }
+.runover-text { font-size: 1.2rem; margin: 0 0 12px; }
+
+@media (max-width: 600px) {
+  .hud { flex-wrap: wrap; }
+}
+EOF
+echo done

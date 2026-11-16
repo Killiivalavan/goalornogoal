@@ -1,0 +1,12 @@
+[
+  {
+    "id": "example-clip-01",
+    "videoId": "dQw4w9WgXcQ",
+    "startAt": 0.0,
+    "pauseAt": 12.4,
+    "endAt": 19.0,
+    "answer": "goal",
+    "difficulty": "medium",
+    "note": "example entry — replace with real clips"
+  }
+]

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Goal or No-Goal</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="view-landing">
+  <div id="landing" class="view">
+    <div class="landing-inner">
+      <h1>Goal or No-Goal</h1>
+      <p class="tagline">Watch the clip freeze at the shot. You have 10 seconds. Goal or No Goal?</p>
+      <button id="startBtn" class="btn primary">Start</button>
+      <p class="hint">One miss ends your run. Full screen, sound off.</p>
+    </div>
+  </div>
+
+  <div id="game" class="view">
+    <div class="hud">
+      <div class="streak">Streak: <span id="streakVal">0</span></div>
+      <div class="timer" id="timer">10</div>
+      <button id="exitFsBtn" class="btn small" type="button" aria-label="Exit fullscreen">Exit</button>
+    </div>
+
+    <div class="player-wrap" id="playerWrap">
+      <div id="player"></div>
+      <div class="click-shield" id="clickShield" aria-hidden="true"></div>
+      <div class="reveal-overlay" id="revealOverlay" hidden></div>
+    </div>
+
+    <div class="controls" id="controls">
+      <button id="goalBtn" class="btn goal" disabled>Goal</button>
+      <button id="nogoalBtn" class="btn nogoal" disabled>No Goal</button>
+    </div>
+
+    <div class="runover" id="runOver" hidden>
+      <p class="runover-text">Run over. Streak: <span id="finalStreak">0</span></p>
+      <button id="playAgainBtn" class="btn primary">Play again?</button>
+    </div>
+
+    <div class="empty" id="emptyState" hidden>
+      <p>No clips loaded. Add clips to <code>clips.json</code>.</p>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
+EOF
+echo done

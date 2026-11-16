@@ -6,11 +6,11 @@
 
 ## Phase 0 — Decisions & setup (prep)
 
-- [ ] Confirm scope lock: no accounts, leaderboards, multiplayer, analytics beyond page views, no backend.
-- [ ] Confirm outcome definition: "Did the ball cross the line as a direct result of this shot?" (includes deflections/rebounds off this shot; excludes later goals in the same passage). Document in README.
-- [ ] Create repo `goalornogoal` (if not exists) and initial commit.
-- [ ] Add `.gitignore` (none needed beyond OS/editor defaults; no build artifacts).
-- [ ] Decide hosting target: GitHub Pages (primary), Netlify/Vercel/Cloudflare as fallback.
+- [x] Confirm scope lock: no accounts, leaderboards, multiplayer, analytics beyond page views, no backend.
+- [x] Confirm outcome definition: "Did the ball cross the line as a direct result of this shot?" (includes deflections/rebounds off this shot; excludes later goals in the same passage). Document in README.
+- [x] Create repo `goalornogoal` and initial commit.
+- [x] Add `.gitignore` (OS/editor defaults).
+- [x] Decide hosting target: GitHub Pages (primary), Netlify/Vercel/Cloudflare as fallback.
 
 ## Phase 1 — Prep: data + docs
 
@@ -19,54 +19,56 @@
 - [ ] Record `startAt`, `pauseAt`, `endAt` (absolute seconds) per clip.
 - [ ] Record `answer` (`"goal"` / `"nogoal"`), `difficulty`, `note`.
 - [ ] Validate schema: `id` unique; `pauseAt >= startAt`; `endAt` (if set) `> pauseAt`.
-- [ ] Write `README.md` with outcome definition and curation notes.
+- [x] Write `README.md` with outcome definition and curation notes.
+- [ ] (data) Create `clips.json` with 10+ hand-curated clips — in progress by user.
+- [ ] (data) Validate schema: unique ids; `pauseAt >= startAt`; `endAt` (if set) `> pauseAt`.
 
 ## Phase 2 — Skeleton (views + styling)
 
-- [ ] Create `index.html` with two views: `#landing` and `#game`, toggled by class on `<body>`/container.
-- [ ] Landing view: short description + one `Start` button.
-- [ ] Game view: player container, 10s timer, two buttons (Goal / No Goal), live streak counter, "Play again?" prompt area.
-- [ ] Create `style.css`: base layout, fullscreen-friendly, player wrap with `.correct`/`.wrong` classes.
-- [ ] View toggling logic in `app.js` (no router).
-- [ ] Add `assets/` (favicon, icons).
+- [x] Create `index.html` with two views: `#landing` and `#game`, toggled by class on `<body>`.
+- [x] Landing view: short description + one `Start` button.
+- [x] Game view: player container, 10s timer, two buttons (Goal / No Goal), live streak counter, "Play again?" prompt area, empty-state.
+- [x] Create `style.css`: base layout, fullscreen-friendly, player wrap with `.correct`/`.wrong` classes.
+- [x] View toggling logic in `app.js` (no router).
+- [ ] Add `assets/` (favicon, icons) — optional, deferred.
 
 ## Phase 3 — YouTube integration
 
-- [ ] Load IFrame API script once.
-- [ ] Create player on container div; on `onReady`: `mute()`, seek to `startAt`, `playVideo()`.
-- [ ] Embed params: `mute=1&autoplay=1&controls=0&disablekb=1&modestbranding=1&rel=0&playsinline=1&fs=1&enablejsapi=1&origin={origin}`.
-- [ ] `onStateChange`: on `PLAYING`, start rAF/setInterval poll.
-- [ ] Poll: when `currentTime >= pauseAt` → `pauseVideo()` + `seekTo(pauseAt)` → go `DECISION`.
-- [ ] `onError`: trigger dead-clip skip.
-- [ ] Reveal playback: seek to `pauseAt`, `playVideo()`; poll to `endAt` (or end) then pause.
-- [ ] Locking timeline: snap back if `> pauseAt + 0.15` pre-answer; snap if `< startAt`; allow forward to `endAt`.
-- [ ] Click-through prevention: transparent overlay `<div>` over iframe.
+- [x] Load IFrame API script once.
+- [x] Create player on container div; on `onReady`: `mute()`, seek to `startAt`, `playVideo()`.
+- [x] Embed params: `mute=1&autoplay=1&controls=0&disablekb=1&modestbranding=1&rel=0&playsinline=1&fs=1&enablejsapi=1&origin={origin}` (start via playerVars.start + loadVideoById startSeconds).
+- [x] `onStateChange`: on `PLAYING`, start rAF poll.
+- [x] Poll: when `currentTime >= pauseAt` → `pauseVideo()` + `seekTo(pauseAt)` → go `DECISION`.
+- [x] `onError`: trigger dead-clip skip.
+- [x] Reveal playback: seek to `pauseAt`, `playVideo()`; poll to `endAt` (or end) then advance.
+- [x] Locking timeline: snap back if `> pauseAt + 0.15` pre-answer; snap if `< startAt`; allow forward to `endAt`.
+- [x] Click-through prevention: transparent overlay `<div>` over iframe.
 
 ## Phase 4 — Game loop
 
-- [ ] Implement state machine: `LANDING → LOADING → PLAYING → DECISION → REVEAL → (correct) LOADING | (wrong) RUN_OVER → LANDING/restart`.
-- [ ] `LANDING`: on Start → request fullscreen, reset sessionStorage, go `LOADING`.
-- [ ] `LOADING`: pick random unseen clip (reset `seen` if exhausted); create/update player; go `PLAYING`.
-- [ ] `DECISION`: start 10s countdown; enable Goal/No-Goal buttons; on tap or timeout → `REVEAL`.
-- [ ] `REVEAL`: compare answer; apply `.correct`/`.wrong` border glow + overlay text; play rest; branch on result.
-- [ ] `RUN_OVER`: show "Play again?"; on confirm → clear sessionStorage → back to `LANDING` (or `LOADING`).
-- [ ] Timeout in `DECISION` counts as a miss.
-- [ ] Streak increment on correct, reset on wrong, persisted in `sessionStorage`.
-- [ ] Seen-tracking: avoid repeats until pool exhausted.
+- [x] Implement state machine: `LANDING → LOADING → PLAYING → DECISION → REVEAL → (correct) LOADING | (wrong) RUN_OVER`.
+- [x] `LANDING`: on Start → request fullscreen, reset sessionStorage, go `LOADING`.
+- [x] `LOADING`: pick random unseen clip (reset `seen` if exhausted); create/update player; go `PLAYING`.
+- [x] `DECISION`: start 10s countdown; enable Goal/No-Goal buttons; on tap or timeout → `REVEAL`.
+- [x] `REVEAL`: compare answer; apply `.correct`/`.wrong` border glow + overlay text; play rest; branch on result.
+- [x] `RUN_OVER`: show "Play again?"; on confirm → clear sessionStorage → restart.
+- [x] Timeout in `DECISION` counts as a miss.
+- [x] Streak increment on correct, reset on wrong, persisted in `sessionStorage`.
+- [x] Seen-tracking: avoid repeats until pool exhausted.
 
 ## Phase 5 — Lockdown UX
 
-- [ ] Fullscreen: `document.documentElement.requestFullscreen()` inside Start click handler; Esc exits; small exit button.
-- [ ] Mute: `player.mute()` on ready (also `mute=1` param); no unmute toggle.
-- [ ] No native controls visible; keyboard disabled (`disablekb=1` + guard).
-- [ ] Dead-clip skip: on `onError`, mark seen, load next, streak unchanged, no crash.
-- [ ] Test mobile fullscreen early.
+- [x] Fullscreen: `document.documentElement.requestFullscreen()` inside Start click handler; Esc exits; small exit button.
+- [x] Mute: `player.mute()` on ready (also `mute=1` param); no unmute toggle.
+- [x] No native controls visible; keyboard disabled (`disablekb=1`).
+- [x] Dead-clip skip: on `onError`, mark seen, load next, streak unchanged, no crash.
+- [ ] Test mobile fullscreen early (pending real-device test).
 
 ## Phase 6 — Visual reveal
 
-- [ ] Wrap player in `.player-wrap`; toggle `.correct`/`.wrong` during `REVEAL`.
-- [ ] CSS: green/red border glow + box-shadow + centered overlay text ("✓ Goal" / "✗ No Goal").
-- [ ] Remove classes on next load.
+- [x] Wrap player in `.player-wrap`; toggle `.correct`/`.wrong` during `REVEAL`.
+- [x] CSS: green/red border glow + box-shadow + centered overlay text ("✓ Goal" / "✗ No Goal").
+- [x] Remove classes on next load.
 
 ## Phase 7 — Expand content
 
