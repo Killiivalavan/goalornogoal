@@ -66,6 +66,16 @@
     revealOverlay.classList.remove('goal', 'nogoal');
   }
 
+  function isValidClip(c) {
+    if (!c || typeof c.videoId !== 'string') return false;
+    const s = sa(c);
+    if (typeof c.pauseAt !== 'number' || !(c.pauseAt > s)) return false;
+    if (c.answer !== 'goal' && c.answer !== 'nogoal') return false;
+    const e = ea(c);
+    if (e != null && (typeof e !== 'number' || !(e > c.pauseAt))) return false;
+    return true;
+  }
+
   function pickUnseen() {
     if (!clips.length) return null;
     let unseen = clips.filter(c => !seen.has(c.id));
@@ -174,6 +184,12 @@
 
     const clip = pickUnseen();
     if (!clip) { showEl(emptyState, true); state = 'LANDING'; return; }
+    if (!isValidClip(clip)) {
+      // skip incomplete/invalid clips without punishment (treated like dead clips)
+      seen.add(clip.id); saveState();
+      setTimeout(loadNext, 0);
+      return;
+    }
     currentClip = clip;
     seen.add(clip.id); saveState();
     state = 'LOADING';

@@ -1,1 +1,142 @@
-[]
+[
+  {
+    "id": "QQzGOJJytiw",
+    "videoId": "QQzGOJJytiw",
+    "startAt": 0.0,
+    "pauseAt": 0.0,
+    "endAt": 30.0,
+    "answer": "goal",
+    "difficulty": "medium",
+    "note": "TODO: set startAt/pauseAt/endAt/answer. Title: PSG Strasbourg Eric Maxim Choupo Moting. Duration: 30s."
+  },
+  {
+    "id": "e2E-5PyYjT0",
+    "videoId": "e2E-5PyYjT0",
+    "startAt": 0.0,
+    "pauseAt": 0.0,
+    "endAt": 32.0,
+    "answer": "goal",
+    "difficulty": "medium",
+    "note": "TODO: set startAt/pauseAt/endAt/answer. Title: Torres miss vs Utd | Manchester United 3-1 Chelsea | Sep 18 2011. Duration: 32s."
+  },
+  {
+    "id": "Ti7SL6rIDtw",
+    "videoId": "Ti7SL6rIDtw",
+    "startAt": 0.0,
+    "pauseAt": 0.0,
+    "endAt": 38.0,
+    "answer": "goal",
+    "difficulty": "medium",
+    "note": "TODO: set startAt/pauseAt/endAt/answer. Title: Fernando Torres' spectacular double miss Vs Real Sociedad. Duration: 38s."
+  },
+  {
+    "id": "bOA2bb93LTI",
+    "videoId": "bOA2bb93LTI",
+    "startAt": 0.0,
+    "pauseAt": 0.0,
+    "endAt": 6.0,
+    "answer": "goal",
+    "difficulty": "medium",
+    "note": "TODO: set startAt/pauseAt/endAt/answer. Title: Gabriel Magalhaes missed penalty UCL Final. Duration: 6s."
+  },
+  {
+    "id": "dJsBk5LSGsw",
+    "videoId": "dJsBk5LSGsw",
+    "startAt": 0.0,
+    "pauseAt": 0.0,
+    "endAt": 43.0,
+    "answer": "goal",
+    "difficulty": "medium",
+    "note": "TODO: set startAt/pauseAt/endAt/answer. Title: Messi Penalty Miss Ing Copa America Final vs Chile. Duration: 43s."
+  },
+  {
+    "id": "GuH11ZQDzAE",
+    "videoId": "GuH11ZQDzAE",
+    "startAt": 0.0,
+    "pauseAt": 0.0,
+    "endAt": 17.0,
+    "answer": "goal",
+    "difficulty": "medium",
+    "note": "TODO: set startAt/pauseAt/endAt/answer. Title: Messi Epic Penalty Miss Fail Manchester City vs Barcelona. Duration: 17s."
+  },
+  {
+    "id": "uZuv0zKaZos",
+    "videoId": "uZuv0zKaZos",
+    "startAt": 0.0,
+    "pauseAt": 0.0,
+    "endAt": 77.0,
+    "answer": "goal",
+    "difficulty": "medium",
+    "note": "TODO: set startAt/pauseAt/endAt/answer. Title: Ronaldo's offside goal vs Spain 2010 friendly (4K 50 FPS). Duration: 77s."
+  },
+  {
+    "id": "0JajuhnQGwQ",
+    "videoId": "0JajuhnQGwQ",
+    "startAt": 0.0,
+    "pauseAt": 0.0,
+    "endAt": 15.0,
+    "answer": "goal",
+    "difficulty": "medium",
+    "note": "TODO: set startAt/pauseAt/endAt/answer. Title: Bruno Fernandes Lobs Liverpool Goalkeeper From Halfway line. Duration: 15s."
+  },
+  {
+    "id": "Hvb9eLo7eZY",
+    "videoId": "Hvb9eLo7eZY",
+    "startAt": 0.0,
+    "pauseAt": 0.0,
+    "endAt": 12.0,
+    "answer": "goal",
+    "difficulty": "medium",
+    "note": "TODO: set startAt/pauseAt/endAt/answer. Title: Harry Maguire goal 1-0 vs Tranmere. Duration: 12s."
+  },
+  {
+    "id": "7aDixLxFuSA",
+    "videoId": "7aDixLxFuSA",
+    "startAt": 0.0,
+    "pauseAt": 0.0,
+    "endAt": 9.0,
+    "answer": "goal",
+    "difficulty": "medium",
+    "note": "TODO: set startAt/pauseAt/endAt/answer. Title: Raheem Sterling Miss vs Lyon with Titanic Music. Duration: 9s."
+  },
+  {
+    "id": "XeZ5zNv9_40",
+    "videoId": "XeZ5zNv9_40",
+    "startAt": 0.0,
+    "pauseAt": 0.0,
+    "endAt": 103.0,
+    "answer": "goal",
+    "difficulty": "medium",
+    "note": "TODO: set startAt/pauseAt/endAt/answer. Title: TIM HOWARD SCORES FROM 100 YARDS goalkeeper freak goal. Duration: 103s."
+  },
+  {
+    "id": "I1MpJJ4tfLY",
+    "videoId": "I1MpJJ4tfLY",
+    "startAt": 0.0,
+    "pauseAt": 0.0,
+    "endAt": 16.0,
+    "answer": "goal",
+    "difficulty": "medium",
+    "note": "TODO: set startAt/pauseAt/endAt/answer. Title: Cisse Goal of the Season vs Chelsea. Duration: 16s."
+  },
+  {
+    "id": "z35TKJuhUBM",
+    "videoId": "z35TKJuhUBM",
+    "startAt": 0.0,
+    "pauseAt": 0.0,
+    "endAt": 7.0,
+    "answer": "goal",
+    "difficulty": "medium",
+    "note": "TODO: set startAt/pauseAt/endAt/answer. Title: FUNNY Best own goal ever Kompany. Duration: 7s."
+  },
+  {
+    "id": "kBs67YmP5Fg",
+    "videoId": "kBs67YmP5Fg",
+    "startAt": 0.0,
+    "pauseAt": 0.0,
+    "endAt": 41.0,
+    "answer": "goal",
+    "difficulty": "medium",
+    "note": "TODO: set startAt/pauseAt/endAt/answer. Title: Walker's Goal-Line Clearance Keep Community Shield. Duration: 41s."
+  }
+]
