@@ -145,6 +145,7 @@
       playerVars: {
         mute: 1, autoplay: 1, controls: 0, disablekb: 1,
         modestbranding: 1, rel: 0, playsinline: 1, fs: 1,
+        showinfo: 0, iv_load_policy: 3,
         origin: location.origin, start: Math.floor(s)
       },
       events: {
@@ -235,6 +236,8 @@
 
     try { player.seekTo(currentClip.pauseAt, true); player.playVideo(); } catch (e) {}
     startPoll();
+    const revealMs = ((ea(currentClip) != null ? ea(currentClip) : currentClip.pauseAt + 6) - currentClip.pauseAt + 1.2) * 1000;
+    setTimeout(() => { if (state === 'REVEAL' && !revealScheduled) scheduleRevealAdvance(); }, revealMs);
   }
 
   function scheduleRevealAdvance() {

@@ -35,7 +35,7 @@
     "startAt": 0.0,
     "pauseAt": 2.0,
     "endAt": 6.0,
-    "answer": "goal",
+    "answer": "no-goal",
     "difficulty": "medium",
     "note": "TODO: set startAt/pauseAt/endAt/answer. Title: Gabriel Magalhaes missed penalty UCL Final. Duration: 6s."
   },
@@ -45,7 +45,7 @@
     "startAt": 14.0,
     "pauseAt": 17.5,
     "endAt": 21.0,
-    "answer": "goal",
+    "answer": "no-goal",
     "difficulty": "medium",
     "note": "TODO: set startAt/pauseAt/endAt/answer. Title: Messi Penalty Miss Ing Copa America Final vs Chile. Duration: 43s."
   },

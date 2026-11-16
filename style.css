@@ -35,6 +35,7 @@ h1 { font-size: clamp(2rem, 6vw, 3rem); margin: 0 0 12px; }
 .player-wrap.correct { border-color: var(--goal); box-shadow: 0 0 40px rgba(46,204,113,0.6); }
 .player-wrap.wrong { border-color: var(--nogoal); box-shadow: 0 0 40px rgba(231,76,60,0.6); }
 #player { position: absolute; inset: 0; width: 100%; height: 100%; }
+.title-mask { position: absolute; top: 0; left: 0; right: 0; height: 36px; z-index: 2; background: var(--bg); pointer-events: none; }
 .click-shield { position: absolute; inset: 0; z-index: 2; }
 .reveal-overlay { position: absolute; inset: 0; z-index: 3; display: flex; align-items: center; justify-content: center; font-size: clamp(2rem, 8vw, 4rem); font-weight: 800; pointer-events: none; text-shadow: 0 2px 12px rgba(0,0,0,0.6); }
 .reveal-overlay.goal { color: var(--goal); }
