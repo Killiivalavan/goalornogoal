@@ -124,8 +124,11 @@
     } else if (state === 'REVEAL') {
       if (t < s) { try { player.seekTo(s, true); } catch (e) {} }
       if (e != null && t >= e) {
+        console.log('REVEAL reached endAt', t, e);
         try { player.pauseVideo(); player.seekTo(e, true); } catch (e) {}
         if (!revealScheduled) scheduleRevealAdvance();
+      } else if (e != null) {
+        // console.log('REVEAL progress', t, '/', e);
       }
     }
     startPoll();
@@ -236,12 +239,19 @@
 
     try { player.seekTo(currentClip.pauseAt, true); player.playVideo(); } catch (e) {}
     startPoll();
-    const revealMs = ((ea(currentClip) != null ? ea(currentClip) : currentClip.pauseAt + 6) - currentClip.pauseAt + 1.2) * 1000;
-    setTimeout(() => { if (state === 'REVEAL' && !revealScheduled) scheduleRevealAdvance(); }, revealMs);
+    const revealDelay = (ea(currentClip) != null ? ea(currentClip) - currentClip.pauseAt : 6) * 1000;
+    setTimeout(() => {
+      if (state !== 'REVEAL') return;
+      try { if (ea(currentClip) != null) { player.pauseVideo(); player.seekTo(ea(currentClip), true); } } catch (e) {}
+      if (!revealScheduled) scheduleRevealAdvance();
+    }, Math.max(300, revealDelay));
+    const backupMs = revealDelay + 1500;
+    setTimeout(() => { if (state === 'REVEAL' && !revealScheduled) scheduleRevealAdvance(); }, backupMs);
   }
 
   function scheduleRevealAdvance() {
     if (revealScheduled) return;
+    console.log('scheduleRevealAdvance called');
     revealScheduled = true;
     stopPoll();
     setTimeout(advanceReveal, 1200);
