@@ -1,53 +1,222 @@
 :root {
-  --bg: #0b0f14;
-  --fg: #f2f5f9;
-  --muted: #9aa4b2;
-  --goal: #2ecc71;
-  --nogoal: #e74c3c;
-  --accent: #3b82f6;
+  --bg-0: #0a0b0e;
+  --bg-1: #11131a;
+  --surface: rgba(255, 255, 255, 0.04);
+  --surface-2: rgba(255, 255, 255, 0.07);
+  --border: rgba(255, 255, 255, 0.08);
+  --fg: #e8e9ed;
+  --muted: #8a8f9c;
+  --soft: #5b6070;
+  --accent: #c9a227;
+  --goal: #4ade80;
+  --nogoal: #f87171;
+  --radius: 16px;
+  --radius-sm: 10px;
+  --shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
 }
 
 * { box-sizing: border-box; }
-html, body { margin: 0; padding: 0; height: 100%; background: var(--bg); color: var(--fg); font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif; overflow: hidden; }
+html, body { margin: 0; padding: 0; height: 100%; }
+body {
+  background:
+    radial-gradient(1200px 800px at 20% -10%, rgba(201, 162, 39, 0.08), transparent 60%),
+    radial-gradient(900px 700px at 110% 110%, rgba(74, 222, 128, 0.05), transparent 60%),
+    var(--bg-0);
+  color: var(--fg);
+  font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  overflow: hidden;
+  -webkit-font-smoothing: antialiased;
+}
 
 .view { display: none; }
 body.view-landing #landing { display: flex; }
 body.view-game #game { display: flex; }
 
-#landing { align-items: center; justify-content: center; height: 100vh; text-align: center; padding: 24px; }
-.landing-inner { max-width: 480px; }
-h1 { font-size: clamp(2rem, 6vw, 3rem); margin: 0 0 12px; }
-.tagline { color: var(--muted); margin: 0 0 24px; }
-.hint { color: var(--muted); font-size: 0.85rem; margin-top: 16px; }
+/* ---------- Landing ---------- */
+#landing {
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  text-align: center;
+  padding: 32px;
+  position: relative;
+}
+.landing-inner { max-width: 520px; }
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  font-size: 0.72rem;
+  color: var(--soft);
+  margin-bottom: 20px;
+}
+h1 {
+  font-size: clamp(2.4rem, 7vw, 4rem);
+  font-weight: 800;
+  line-height: 0.95;
+  margin: 0 0 18px;
+  letter-spacing: -0.03em;
+}
+h1 .dot { color: var(--accent); }
+.tagline {
+  color: var(--muted);
+  font-size: 1.05rem;
+  line-height: 1.5;
+  margin: 0 0 36px;
+  font-weight: 300;
+}
+.hint {
+  color: var(--soft);
+  font-size: 0.78rem;
+  margin-top: 22px;
+  letter-spacing: 0.02em;
+}
 
-#game { flex-direction: column; height: 100vh; padding: 12px; gap: 12px; }
-.hud { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
-.streak { font-weight: 600; }
-.timer { font-size: 1.5rem; font-variant-numeric: tabular-nums; min-width: 2ch; text-align: center; }
-.btn { cursor: pointer; border: 0; border-radius: 10px; padding: 12px 18px; font-size: 1rem; font-weight: 600; background: #1f2937; color: var(--fg); }
-.btn.primary { background: var(--accent); }
-.btn.small { padding: 6px 10px; font-size: 0.85rem; }
-.btn.goal { background: var(--goal); color: #062814; flex: 1; }
-.btn.nogoal { background: var(--nogoal); color: #2a0a08; flex: 1; }
-.btn:disabled { opacity: 0.4; cursor: not-allowed; }
+/* ---------- Buttons ---------- */
+.btn {
+  cursor: pointer;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 14px 26px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  background: var(--surface);
+  color: var(--fg);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: transform 0.15s ease, background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+  letter-spacing: 0.01em;
+}
+.btn:hover:not(:disabled) { transform: translateY(-1px); border-color: rgba(255,255,255,0.18); }
+.btn:active:not(:disabled) { transform: translateY(0); }
+.btn:disabled { opacity: 0.35; cursor: not-allowed; }
+.btn.primary {
+  background: var(--fg);
+  color: var(--bg-0);
+  border-color: transparent;
+  padding: 16px 34px;
+  font-size: 1rem;
+  box-shadow: 0 8px 30px rgba(232, 233, 237, 0.15);
+}
+.btn.primary:hover:not(:disabled) { box-shadow: 0 12px 40px rgba(232, 233, 237, 0.25); }
+.btn.small { padding: 6px 14px; font-size: 0.78rem; }
+.btn.goal {
+  background: linear-gradient(180deg, rgba(74,222,128,0.18), rgba(74,222,128,0.06));
+  border-color: rgba(74,222,128,0.35);
+  color: var(--goal);
+  flex: 1;
+  padding: 18px;
+  font-size: 1.05rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.btn.goal:hover:not(:disabled) { background: linear-gradient(180deg, rgba(74,222,128,0.28), rgba(74,222,128,0.12)); box-shadow: 0 0 30px rgba(74,222,128,0.25); }
+.btn.nogoal {
+  background: linear-gradient(180deg, rgba(248,113,113,0.18), rgba(248,113,113,0.06));
+  border-color: rgba(248,113,113,0.35);
+  color: var(--nogoal);
+  flex: 1;
+  padding: 18px;
+  font-size: 1.05rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.btn.nogoal:hover:not(:disabled) { background: linear-gradient(180deg, rgba(248,113,113,0.28), rgba(248,113,113,0.12)); box-shadow: 0 0 30px rgba(248,113,113,0.25); }
 
-.player-wrap { position: relative; flex: 1; min-height: 0; border-radius: 12px; overflow: hidden; border: 3px solid transparent; transition: border-color 0.2s, box-shadow 0.2s; background: #000; }
-.player-wrap.correct { border-color: var(--goal); box-shadow: 0 0 40px rgba(46,204,113,0.6); }
-.player-wrap.wrong { border-color: var(--nogoal); box-shadow: 0 0 40px rgba(231,76,60,0.6); }
+/* ---------- Game ---------- */
+#game {
+  flex-direction: column;
+  height: 100vh;
+  padding: 16px 20px;
+  gap: 14px;
+  max-width: 1100px;
+  margin: 0 auto;
+  width: 100%;
+}
+.hud {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 6px 2px;
+}
+.streak {
+  font-weight: 600;
+  font-size: 0.85rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.streak span { color: var(--fg); font-weight: 800; }
+.timer {
+  font-size: 1.6rem;
+  font-variant-numeric: tabular-nums;
+  font-weight: 300;
+  color: var(--fg);
+  min-width: 2ch;
+  text-align: center;
+  letter-spacing: -0.02em;
+}
+.timer.low { color: var(--nogoal); }
+
+.player-wrap {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background: #000;
+  box-shadow: var(--shadow);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+.player-wrap.correct {
+  border-color: rgba(74, 222, 128, 0.6);
+  box-shadow: 0 0 60px rgba(74, 222, 128, 0.25), var(--shadow);
+}
+.player-wrap.wrong {
+  border-color: rgba(248, 113, 113, 0.6);
+  box-shadow: 0 0 60px rgba(248, 113, 113, 0.25), var(--shadow);
+}
 #player { position: absolute; inset: 0; width: 100%; height: 100%; }
-.title-mask { position: absolute; top: 0; left: 0; right: 0; height: 70px; z-index: 2; background: #000; pointer-events: none; }
-.bottom-mask { position: absolute; bottom: 0; left: 0; right: 0; height: 50px; z-index: 2; background: #000; pointer-events: none; }
+.title-mask, .bottom-mask { z-index: 2; }
 .click-shield { position: absolute; inset: 0; z-index: 2; }
-.reveal-overlay { position: absolute; inset: 0; z-index: 3; display: flex; align-items: center; justify-content: center; font-size: clamp(2rem, 8vw, 4rem); font-weight: 800; pointer-events: none; text-shadow: 0 2px 12px rgba(0,0,0,0.6); }
+.reveal-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: clamp(2.2rem, 8vw, 4.5rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  pointer-events: none;
+  text-shadow: 0 4px 30px rgba(0, 0, 0, 0.6);
+  opacity: 0;
+  transform: scale(0.96);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+.reveal-overlay:not([hidden]) { opacity: 1; transform: scale(1); }
 .reveal-overlay.goal { color: var(--goal); }
 .reveal-overlay.nogoal { color: var(--nogoal); }
 
 .controls { display: flex; gap: 12px; }
-.runover, .empty { text-align: center; padding: 16px; }
-.runover-text { font-size: 1.2rem; margin: 0 0 12px; }
+.runover, .empty {
+  text-align: center;
+  padding: 20px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  backdrop-filter: blur(8px);
+}
+.runover-text { font-size: 1.1rem; margin: 0 0 16px; font-weight: 300; color: var(--muted); }
+.runover-text span { color: var(--fg); font-weight: 800; }
 
 @media (max-width: 600px) {
-  .hud { flex-wrap: wrap; }
+  #game { padding: 12px 14px; gap: 10px; }
+  .btn.goal, .btn.nogoal { padding: 14px; font-size: 0.95rem; }
 }
 EOF
 echo done

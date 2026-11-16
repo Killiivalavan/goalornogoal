@@ -57,7 +57,10 @@
   function ea(c) { return (c && typeof c.endAt === 'number') ? c.endAt : null; }
 
   function updateStreakUI() { streakVal.textContent = streak; }
-  function updateTimerUI() { timerEl.textContent = Math.max(0, Math.ceil(timerRemaining)); }
+  function updateTimerUI() {
+    timerEl.textContent = Math.max(0, Math.ceil(timerRemaining));
+    timerEl.classList.toggle('low', timerRemaining <= 3);
+  }
 
   function clearRevealVisuals() {
     playerWrap.classList.remove('correct', 'wrong');
